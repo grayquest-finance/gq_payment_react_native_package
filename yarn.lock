@@ -3188,6 +3188,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-native-base64@npm:^0.2.2":
+  version: 0.2.2
+  resolution: "@types/react-native-base64@npm:0.2.2"
+  checksum: fa3b730b21cff86d026c3a867e3dabe59482db02d128dd69a42e69016a699d426938b48d3b935a47ae6493e9c9de73ba75a5ce2bef8608c2b94254e5a0debbb1
+  languageName: node
+  linkType: hard
+
+"@types/react-native-razorpay@npm:^2.2.6":
+  version: 2.2.6
+  resolution: "@types/react-native-razorpay@npm:2.2.6"
+  dependencies:
+    "@types/react": "*"
+  checksum: 6fd60dbb874ff5bd7e30a8013812fe5f0fea0b9fde3949d2b121344618446ab4aac648cb9b8578d2bf08b69ab193587cde51f3e87b43b9d94d8a259c72944a47
+  languageName: node
+  linkType: hard
+
 "@types/react@npm:^18.2.44":
   version: 18.3.11
   resolution: "@types/react@npm:18.3.11"
@@ -4259,6 +4275,13 @@ __metadata:
   version: 1.0.30001667
   resolution: "caniuse-lite@npm:1.0.30001667"
   checksum: f3c6a40c3e4115c6e5fb46c47884d903191285d29ec8a8b092546efbc9cdedcbd7183cce72dd3cab7dfc16c4d5b2745892876b3d6dda75d4cba49f9389239aa9
+  languageName: node
+  linkType: hard
+
+"cashfree-pg-api-contract@npm:^2.0.7":
+  version: 2.0.7
+  resolution: "cashfree-pg-api-contract@npm:2.0.7"
+  checksum: ad6ff0690577a49f240da1b06a04e4d49f8d564c273fd160fc4142f043a03e6c5b836e323f47b3bb9f9d72fa9754156acf4f811b3dfe4ddba32f3060ad8c1a63
   languageName: node
   linkType: hard
 
@@ -6886,6 +6909,9 @@ __metadata:
     react: 18.3.1
     react-native: 0.75.4
     react-native-builder-bob: ^0.30.2
+    react-native-cashfree-pg-sdk: ^2.1.15
+    react-native-razorpay: ^2.3.0
+    react-native-webview: ^13.12.3
   languageName: unknown
   linkType: soft
 
@@ -6899,6 +6925,8 @@ __metadata:
     "@release-it/conventional-changelog": ^5.0.0
     "@types/jest": ^29.5.5
     "@types/react": ^18.2.44
+    "@types/react-native-base64": ^0.2.2
+    "@types/react-native-razorpay": ^2.2.6
     commitlint: ^17.0.2
     del-cli: ^5.1.0
     eslint: ^8.51.0
@@ -6908,7 +6936,11 @@ __metadata:
     prettier: ^3.0.3
     react: 18.3.1
     react-native: 0.75.4
+    react-native-base64: ^0.2.1
     react-native-builder-bob: ^0.30.2
+    react-native-cashfree-pg-sdk: ^2.1.15
+    react-native-razorpay: ^2.3.0
+    react-native-webview: ^13.12.2
     release-it: ^15.0.0
     turbo: ^1.10.7
     typescript: ^5.2.2
@@ -7334,7 +7366,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"invariant@npm:^2.2.4":
+"invariant@npm:2.2.4, invariant@npm:^2.2.4":
   version: 2.2.4
   resolution: "invariant@npm:2.2.4"
   dependencies:
@@ -10772,6 +10804,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-base64@npm:^0.2.1":
+  version: 0.2.1
+  resolution: "react-native-base64@npm:0.2.1"
+  checksum: 5127c857250cabb9c24f494b56185a4339bd0ebb859824a01c2f4eb3264379556e06efc8e59ffb9585cbf1c5e6fee18f50f4a6e8a1c63fe4b5cedf0658f8c25e
+  languageName: node
+  linkType: hard
+
 "react-native-builder-bob@npm:^0.30.2":
   version: 0.30.2
   resolution: "react-native-builder-bob@npm:0.30.2"
@@ -10801,6 +10840,41 @@ __metadata:
   bin:
     bob: bin/bob
   checksum: 880ba5c9cf45f20dc5d7423a82b6963bb61d3fa41096b1d7ac2c7a141dfaedd5386ae6d29f80861922911220b8d0d689c831e01d9c8aca06afbb53933fa0f8b5
+  languageName: node
+  linkType: hard
+
+"react-native-cashfree-pg-sdk@npm:^2.1.15":
+  version: 2.1.16
+  resolution: "react-native-cashfree-pg-sdk@npm:2.1.16"
+  dependencies:
+    cashfree-pg-api-contract: ^2.0.7
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: f0c3b50f04b02f791b33ea6af9e270ef2dca2953eab269c0a362810093689826fad4c8720199e5cce1148a133027367111bfade6875fad5cc9d2e29c7b4a7d5b
+  languageName: node
+  linkType: hard
+
+"react-native-razorpay@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "react-native-razorpay@npm:2.3.0"
+  peerDependencies:
+    react: ">=16.8.0"
+    react-native: ">=0.66.0"
+  checksum: 35a549938e001d2ad30f8bcacc04df05070ea8cafc201e8938c750f5abc9b4c9ad29240924398030a1cc3633ac3e71d1871f29ff7bdf9096aa0d9cbd304d2ad4
+  languageName: node
+  linkType: hard
+
+"react-native-webview@npm:^13.12.2, react-native-webview@npm:^13.12.3":
+  version: 13.12.3
+  resolution: "react-native-webview@npm:13.12.3"
+  dependencies:
+    escape-string-regexp: ^4.0.0
+    invariant: 2.2.4
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 94d824fedc6b5c0402926b99a96f71f4752416e4f038be827552015c0bf6d595d71ba656079618402662aec5e2c539018b0bff2906b6f95261f70893e5dd5d80
   languageName: node
   linkType: hard
 
@@ -11122,13 +11196,13 @@ __metadata:
   linkType: hard
 
 "regjsparser@npm:^0.11.0":
-  version: 0.11.0
-  resolution: "regjsparser@npm:0.11.0"
+  version: 0.11.1
+  resolution: "regjsparser@npm:0.11.1"
   dependencies:
     jsesc: ~3.0.2
   bin:
     regjsparser: bin/parser
-  checksum: d18a8d5029217c12b5259eb31917fc29099b1da59f84a92d383216d4644f202a5c9ef4b6094c9845bcffb241072a5ec0667be22d8327e06240d4b88ee67ae4f6
+  checksum: 231d60810ca12a760393d65d149aa9501ea28b02c27a61c551b4f9162fe3cf48b289423515b73b1aea52949346e78c76cd552ac7169817d31f34df348db90fb4
   languageName: node
   linkType: hard
 
