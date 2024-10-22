@@ -95,12 +95,16 @@ const GQPaymentSDK: React.FC<Props> = ({ clientObject, prefillObject, onSuccess,
         const base64 = `${clientObject?.auth.client_id}:${clientObject?.auth.client_secret_key}`
 
         loadURL = `${Environment.gteWebBaseURL()}instant-eligibility?gapik=${clientObject?.auth.gq_api_key}
-        &abase=${Common.encodeBase64(base64)}&sid=${clientObject?.student_id}&pc=${clientObject?.customization.theme_color}
+        &abase=${Common.encodeBase64(base64)}
         &m=${clientObject?.customer_number}&cid=${apiresponse.data.customer_id}&ccode=${apiresponse.data.customer_code}
         &env=${Environment.getEnvironment()}&s=rnsdk&user=${user}`;
 
         if(clientObject?.pp_config!=null && clientObject.pp_config.slug.length>0){
           loadURL += `&_pp_config=${JSON.stringify(clientObject.pp_config)}`
+        }
+
+        if(clientObject?.customization!=null && clientObject.customization.theme_color.length>0){
+          loadURL +=`&pc=${clientObject?.customization.theme_color}`
         }
 
         if(clientObject?.fee_headers!=null){
@@ -169,6 +173,7 @@ const GQPaymentSDK: React.FC<Props> = ({ clientObject, prefillObject, onSuccess,
       }
   
       if('pp_config' in clientObject!){
+        console.log(`ppConfig: ${JSON.stringify(clientObject.pp_config)}`)
         if(Common.isValidJson(JSON.stringify(clientObject.pp_config))){
           const ppConfig = Common.isValidPPConfig(JSON.stringify(clientObject.pp_config))
           ppConfig.isValid? isValid= true : errorMessage += `${ppConfig.message}`
@@ -196,11 +201,15 @@ const GQPaymentSDK: React.FC<Props> = ({ clientObject, prefillObject, onSuccess,
         const base64 = `${clientObject?.auth.client_id}:${clientObject?.auth.client_secret_key}`
   
         loadURL = `${Environment.gteWebBaseURL()}instant-eligibility?gapik=${clientObject?.auth.gq_api_key}
-        &abase=${Common.encodeBase64(base64)}&pc=${clientObject?.customization.theme_color}
+        &abase=${Common.encodeBase64(base64)}
         &sid=${clientObject?.student_id}&env=${Environment.getEnvironment()}&s=rnsdk&user=new`
   
         if(clientObject?.pp_config!=null && clientObject.pp_config.slug.length>0){
           loadURL += `&_pp_config=${JSON.stringify(clientObject.pp_config)}`
+        }
+
+        if(clientObject?.customization!=null && clientObject.customization.theme_color.length>0){
+          loadURL +=`&pc=${clientObject?.customization.theme_color}`
         }
   
         if(clientObject?.fee_headers!=null){
