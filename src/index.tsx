@@ -95,7 +95,7 @@ const GQPaymentSDK: React.FC<Props> = ({ clientObject, prefillObject, onSuccess,
         const base64 = `${clientObject?.auth.client_id}:${clientObject?.auth.client_secret_key}`
 
         loadURL = `${Environment.gteWebBaseURL()}instant-eligibility?gapik=${clientObject?.auth.gq_api_key}
-        &abase=${Common.encodeBase64(base64)}
+        &abase=${Common.encodeBase64(base64)}&sid=${clientObject?.student_id}
         &m=${clientObject?.customer_number}&cid=${apiresponse.data.customer_id}&ccode=${apiresponse.data.customer_code}
         &env=${Environment.getEnvironment()}&s=rnsdk&user=${user}`;
 
