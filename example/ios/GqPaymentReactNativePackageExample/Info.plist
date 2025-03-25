@@ -47,6 +47,14 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<key>LSApplicationQueriesSchemes</key>
+  <array>
+   <string>bhim</string>
+   <string>paytmmp</string>
+   <string>phonepe</string>
+   <string>tez</string>
+   <string>credpay</string>
+  </array>
 	<false/>
 </dict>
 </plist>

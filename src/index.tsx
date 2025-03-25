@@ -4,7 +4,7 @@ import { Environment } from './Environment';
 import { Common } from './Common';
 import GQWebView from './GQWebView';
 
-interface ClientObject {
+interface config {
   auth: {
     client_id: string,
     client_secret_key: string,
@@ -13,28 +13,33 @@ interface ClientObject {
   student_id: string,
   env: string,
   customer_number: string,
+  reference_id: string,
+  emi_plan_id: string,
+  udf_details: object,
   pp_config: {
     slug: string
   },
+  payment_methods: string,
   fee_headers: object,
+  fee_headers_split: object,
   customization: {
     theme_color: string
   }
 }
 
-interface PrefillObject {
+interface prefill {
 
 }
 
 interface Props {
-  clientObject?: ClientObject | null;
-  prefillObject?: PrefillObject | null;
+  config?: config | null;
+  prefill?: prefill | null;
   onSuccess?: (data: object) => void;
   onFailed?: (error: object) => void;
   onCancel?: (data: object) => void;
 }
 
-const GQPaymentSDK: React.FC<Props> = ({ clientObject, prefillObject, onSuccess, onFailed, onCancel }) => {
+const GQPaymentSDK: React.FC<Props> = ({ config, prefill, onSuccess, onFailed, onCancel }) => {
   const [webviewVisible, setWebviewVisible] = useState(false);
   const [completeURL, setLoadUrl] = useState<any | undefined>(undefined);
   const [loading, setLoading] = useState(true);
@@ -67,7 +72,7 @@ const GQPaymentSDK: React.FC<Props> = ({ clientObject, prefillObject, onSuccess,
 
 
   const handleOpenGQWebView = () => {
-    console.log('Global Environment '+Environment.getEnvironment())
+    // console.log('Global Environment '+Environment.getEnvironment())
     // createCustomerApiCall();
     if(webviewVisible){
       // setLoading(false);
@@ -82,8 +87,8 @@ const GQPaymentSDK: React.FC<Props> = ({ clientObject, prefillObject, onSuccess,
     try{
       let user;
 
-      const apiresponse = await Common.makeApiCall(clientObject!.customer_number, clientObject?.auth.client_id, clientObject?.auth.client_secret_key, clientObject?.auth.gq_api_key);
-      console.log('API Response:', apiresponse);
+      const apiresponse = await Common.makeApiCall(config!.customer_number, config?.auth.client_id, config?.auth.client_secret_key, config?.auth.gq_api_key);
+      // console.log('API Response:', apiresponse);
       if(apiresponse.status_code == 200 || apiresponse.status_code==201){
 
         if(apiresponse.status_code == 201 ){
@@ -92,27 +97,47 @@ const GQPaymentSDK: React.FC<Props> = ({ clientObject, prefillObject, onSuccess,
           user =  "existing"
         }
 
-        const base64 = `${clientObject?.auth.client_id}:${clientObject?.auth.client_secret_key}`
+        const base64 = `${config?.auth.client_id}:${config?.auth.client_secret_key}`
 
-        loadURL = `${Environment.gteWebBaseURL()}instant-eligibility?gapik=${clientObject?.auth.gq_api_key}
-        &abase=${Common.encodeBase64(base64)}&sid=${clientObject?.student_id}
-        &m=${clientObject?.customer_number}&cid=${apiresponse.data.customer_id}&ccode=${apiresponse.data.customer_code}
+        loadURL = `${Environment.gteWebBaseURL()}instant-eligibility?gapik=${config?.auth.gq_api_key}
+        &abase=${Common.encodeBase64(base64)}&sid=${config?.student_id}
+        &m=${config?.customer_number}&cid=${apiresponse.data.customer_id}&ccode=${apiresponse.data.customer_code}
         &env=${Environment.getEnvironment()}&s=rnsdk&user=${user}`;
 
-        if(clientObject?.pp_config!=null && clientObject.pp_config.slug.length>0){
-          loadURL += `&_pp_config=${JSON.stringify(clientObject.pp_config)}`
+        if('reference_id' in config! && config.reference_id.length>0){
+          loadURL += `&reference_id=${config.reference_id}`
         }
 
-        if(clientObject?.customization!=null && clientObject.customization.theme_color.length>0){
-          loadURL +=`&pc=${clientObject?.customization.theme_color}`
+        if(`emi_plan_id` in config! && config.emi_plan_id.length>0){
+          loadURL += `&emi_plan_id=${config.emi_plan_id}`
         }
 
-        if(clientObject?.fee_headers!=null){
-          loadURL += `&_fee_headers=${JSON.stringify(clientObject.fee_headers)}`
+        if(`udf_details` in config! && config.udf_details!=null && Common.isValidJson(JSON.stringify(config.udf_details))){
+          loadURL += `&udf_details=${JSON.stringify(config.udf_details)}`
         }
 
-        if(prefillObject!=null && Common.isValidJson(JSON.stringify(prefillObject))){
-          loadURL += `&optional=${JSON.stringify(prefillObject)}`
+        if(config?.pp_config!=null && config.pp_config.slug.length>0){
+          loadURL += `&_pp_config=${JSON.stringify(config.pp_config)}`
+        }
+
+        if(config?.customization!=null && config.customization.theme_color.length>0){
+          loadURL +=`&pc=${config?.customization.theme_color}`
+        }
+
+        if(`payment_methods` in config! && config.payment_methods.length>0){
+          loadURL +=`&payment_methods=${config.payment_methods}`
+        }
+
+        if(config?.fee_headers!=null){
+          loadURL += `&_fee_headers=${JSON.stringify(config.fee_headers)}`
+        }
+
+        if(`fee_headers_split` in config! && config.fee_headers_split != null && Common.isValidJson(JSON.stringify(config.fee_headers_split))){
+          loadURL += `&fee_headers_split=${JSON.stringify(config.fee_headers_split)}`
+        }
+
+        if(prefill!=null && Common.isValidJson(JSON.stringify(prefill))){
+          loadURL += `&optional=${JSON.stringify(prefill)}`
         }
 
         loadURL += `&_v=${Environment.VERSION}`
@@ -133,38 +158,42 @@ const GQPaymentSDK: React.FC<Props> = ({ clientObject, prefillObject, onSuccess,
 
   useEffect(() => {
 
-    if(Common.isValidJson(JSON.stringify(clientObject))){
-      console.log('isValidConfigObject: '+JSON.stringify(clientObject));
+    errorMessage = "";
+
+    if(Common.isValidJson(JSON.stringify(config))){
+      console.log('isValidConfigObject: '+JSON.stringify(config));
   
-      if('auth' in clientObject! && Common.isValidJson(JSON.stringify(clientObject.auth))){
+      if('auth' in config! && Common.isValidJson(JSON.stringify(config.auth))){
+
+        isValid = true;
   
-        const auths = Common.isValidAuth(JSON.stringify(clientObject.auth))
-        auths.isValid? isValid= true : errorMessage += `${auths.message}`
+        // const auths = Common.isValidAuth(JSON.stringify(config.auth)) 
+        // auths.isValid? isValid= true : errorMessage += `${auths.message}`
   
       }else{
         isValid = false;
         errorMessage += `Invalid Auth Object`
       }
   
-      if('env' in clientObject! && Common.isValidEnv(clientObject.env)){
+      if('env' in config! && Common.isValidEnv(config.env)){
         isValid = true;
-        Environment.setEnvironment(clientObject.env)
+        Environment.setEnvironment(config.env)
         console.log("Environment: "+Environment.getEnvironment())
       }else{
         isValid = false;
         errorMessage += `Invalid Environment, `
       }
   
-      if('student_id' in clientObject! && Common.isValidString(clientObject.student_id)){
+      if('student_id' in config! && Common.isValidString(config.student_id)){
         isValid = true;
       }else{
         isValid = false;
         errorMessage += `Invalid Student Id, `
       }
   
-      if('customization' in clientObject!){
-        if(Common.isValidJson(JSON.stringify(clientObject.customization))){
-          const customization = Common.isValidCustomization(JSON.stringify(clientObject.customization))
+      if('customization' in config!){
+        if(Common.isValidJson(JSON.stringify(config.customization))){
+          const customization = Common.isValidCustomization(JSON.stringify(config.customization))
           customization.isValid? isValid= true : errorMessage += `${customization.message}`
         }else{
           isValid = false;
@@ -172,52 +201,82 @@ const GQPaymentSDK: React.FC<Props> = ({ clientObject, prefillObject, onSuccess,
         }
       }
   
-      if('pp_config' in clientObject!){
-        console.log(`ppConfig: ${JSON.stringify(clientObject.pp_config)}`)
-        if(Common.isValidJson(JSON.stringify(clientObject.pp_config))){
-          const ppConfig = Common.isValidPPConfig(JSON.stringify(clientObject.pp_config))
+      if('pp_config' in config!){
+        // console.log(`ppConfig: ${JSON.stringify(config.pp_config)}`)
+        if(Common.isValidJson(JSON.stringify(config.pp_config))){
+          const ppConfig = Common.isValidPPConfig(JSON.stringify(config.pp_config))
           ppConfig.isValid? isValid= true : errorMessage += `${ppConfig.message}`
         }else{
           isValid = false;
           errorMessage += `Invalid PP Config, `
         }
       }
+
+      if('fee_headers' in config!){
+        // console.log(`feeHeaders: ${JSON.stringify(config.fee_headers)}`)
+        if(Common.isValidJson(JSON.stringify(config.fee_headers))){
+          isValid = true;
+        }else{
+          isValid = false;
+          errorMessage += `Invalid Fee Headers, `
+        }
+      }
   
     }else {
       isValid = false;
-      errorMessage +=  `Invalid Client Object`
+      errorMessage +=  `Invalid Config Object`
     }
   
-    console.log("Error Message: "+errorMessage);
-    console.log("isVAlid: "+isValid);
+    // console.log("Error Message: "+errorMessage);
+    // console.log("isVAlid: "+isValid);
   
     if(isValid){
-      if('customer_number' in clientObject! && Common.isValidMobileNumber(clientObject.customer_number)){
-        console.log("hasCustomerNumber")
+      if('customer_number' in config! && Common.isValidMobileNumber(config.customer_number)){
+        // console.log("hasCustomerNumber")
           createCustomerApiCall();
         
       }else{
 
-        const base64 = `${clientObject?.auth.client_id}:${clientObject?.auth.client_secret_key}`
+        const base64 = `${config?.auth.client_id}:${config?.auth.client_secret_key}`
   
-        loadURL = `${Environment.gteWebBaseURL()}instant-eligibility?gapik=${clientObject?.auth.gq_api_key}
+        loadURL = `${Environment.gteWebBaseURL()}instant-eligibility?gapik=${config?.auth.gq_api_key}
         &abase=${Common.encodeBase64(base64)}
-        &sid=${clientObject?.student_id}&env=${Environment.getEnvironment()}&s=rnsdk&user=new`
-  
-        if(clientObject?.pp_config!=null && clientObject.pp_config.slug.length>0){
-          loadURL += `&_pp_config=${JSON.stringify(clientObject.pp_config)}`
+        &sid=${config?.student_id}&env=${Environment.getEnvironment()}&s=rnsdk&user=new`
+
+        if('reference_id' in config! && config.reference_id.length>0){
+          loadURL += `&reference_id=${config.reference_id}`
         }
 
-        if(clientObject?.customization!=null && clientObject.customization.theme_color.length>0){
-          loadURL +=`&pc=${clientObject?.customization.theme_color}`
-        }
-  
-        if(clientObject?.fee_headers!=null){
-          loadURL += `&_fee_headers=${JSON.stringify(clientObject.fee_headers)}`
+        if(`emi_plan_id` in config! && config.emi_plan_id.length>0){
+          loadURL += `&emi_plan_id=${config.emi_plan_id}`
         }
 
-        if(prefillObject!=null && Common.isValidJson(JSON.stringify(prefillObject))){
-          loadURL += `&optional=${JSON.stringify(prefillObject)}`
+        if(`udf_details` in config! && config.udf_details!=null && Common.isValidJson(JSON.stringify(config.udf_details))){
+          loadURL += `&udf_details=${JSON.stringify(config.udf_details)}`
+        }
+  
+        if(config?.pp_config!=null && config.pp_config.slug.length>0){
+          loadURL += `&_pp_config=${JSON.stringify(config.pp_config)}`
+        }
+
+        if(`payment_methods` in config! && config.payment_methods.length>0){
+          loadURL +=`&payment_methods=${config.payment_methods}`
+        }
+
+        if(config?.customization!=null && config.customization.theme_color.length>0){
+          loadURL +=`&pc=${config?.customization.theme_color}`
+        }
+  
+        if(config?.fee_headers!=null){
+          loadURL += `&_fee_headers=${JSON.stringify(config.fee_headers)}`
+        }
+
+        if(`fee_headers_split` in config! && config.fee_headers_split != null && Common.isValidJson(JSON.stringify(config.fee_headers_split))){
+          loadURL += `&fee_headers_split=${JSON.stringify(config.fee_headers_split)}`
+        }
+
+        if(prefill!=null && Common.isValidJson(JSON.stringify(prefill))){
+          loadURL += `&optional=${JSON.stringify(prefill)}`
         }
   
         loadURL += `&_v=${Environment.VERSION}`
