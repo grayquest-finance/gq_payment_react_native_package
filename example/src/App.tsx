@@ -27,11 +27,24 @@ export default function App() {
     // },
 
      // Edunext
-     auth: {
-      client_id: 'GQ-a194690e-c1f8-483c-9d83-2a2fd737b021',
-      client_secret_key: '94c35f29-84fe-4a50-a752-f4328b9b850d',
-      gq_api_key: 'f4877340-0771-46d7-bb60-a582afc610c7'
-    },
+    //  auth: {
+    //   client_id: 'GQ-a194690e-c1f8-483c-9d83-2a2fd737b021',
+    //   client_secret_key: '94c35f29-84fe-4a50-a752-f4328b9b850d',
+    //   gq_api_key: 'f4877340-0771-46d7-bb60-a582afc610c7'
+    // },
+
+      // auth: {
+      //   client_id: 'GQ-0f81714a-902e-480b-a7cf-dc6efa2c7c3f',
+      //   client_secret_key: '44c4d4ea-a40b-44a2-a1e2-67a77ae1e245',
+      //   gq_api_key: 'fba2411b-ed05-4820-878d-a42c4475efac'
+      // },
+
+      // avinash live 
+      auth: {
+        client_id: 'GQ-d5b973bc-015f-468b-940b-edd7c9ed4b7d',
+        client_secret_key: '190ed75a-3108-45b6-8da5-c9da9f85054d',
+        gq_api_key: '2ebc4f3f-0e04-4bbc-b904-7fe6838fd2e4'
+      },
 
     // auth: {
     //   client_id: 'GQ-0f81714a-902e-480b-a7cf-dc6efa2c7c3f',
@@ -44,10 +57,10 @@ export default function App() {
     //   client_secret_key: '4a937d7a-5b41-445c-94ae-4289efff2237',
     //   gq_api_key: '513476f6-dfa9-4bc4-9ae3-8da925a1207d'
     // },
-    env: "stage",
-    student_id: 'std_121000124',
-    customer_number: '8425900opj',
-    // reference_id: '',
+    env: "live",
+    student_id: 'demo7896',
+    customer_number: '8425900003',
+    reference_id: 'ref123456',
     // emi_plan_id: "131873",
     // udf_details: {
     //   "udf_1":"dsdsdsd"
@@ -58,13 +71,16 @@ export default function App() {
     //   "direct": 5
     // },
     fee_headers: {
-      "student_fee": 15000,
+      // "student_fee": 15000,
+      "Payabel EMI": 100000,
+      "Payabel AD": 50000,
+      "Payabel PG": 10
     },
-    pp_config: {
+    // pp_config: {
       // slug: "purva-gile"
-      slug: "edunext"
+      // slug: "edunext"
       // slug: "arjun-gile"
-    },
+    // },
     payment_methods: "['credit_card', 'net_banking']",
     // fee_headers_split : {
     //   monthly_emi: {

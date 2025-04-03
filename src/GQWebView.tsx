@@ -99,9 +99,10 @@ const GQWebView: React.FC<GQWebViewProps> = ({ url, sdkSuccess, sdkCancel, sdkEr
         const session = new CFSession(
           sessionid,
           orderid,
-          CFEnvironment.SANDBOX,
+          Environment.getCashfreeEnv(),
         );
         console.log('Session', JSON.stringify(session));
+        console.log('Session', getSession(orderid, sessionid));
         // console.log(JSON.stringify(dropPayment));
         CFPaymentGatewayService.doWebPayment(getSession(orderid, sessionid));
       } catch (e: any) {
@@ -131,7 +132,7 @@ const GQWebView: React.FC<GQWebViewProps> = ({ url, sdkSuccess, sdkCancel, sdkEr
 
       if(eventType!=null && eventType=='sendPGOptions'){
         name = messageData.name
-        // console.log( `name : ${name}`)
+        console.log( `name : ${name}`)
         const pgOptions = messageData.pgOptions
         // console.log(`pgOptions: ${JSON.stringify(pgOptions)}`)
         if(name=='UNIPG'){

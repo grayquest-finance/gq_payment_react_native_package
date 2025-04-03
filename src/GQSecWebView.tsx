@@ -14,20 +14,33 @@ const GQSecWebView: React.FC<GQSecWebViewProps> = ({ url, onClose }) => {
 
   const onNavigationStateChange = (event: any) => {
     // Detect URL changes
-    // console.log('Current URL:', event.url);
+    console.log('Current URL:', event.url);
     const updateURL = event.url;
     if(updateURL.includes(Environment.getRedirectionURL())){
         onClose()
         return false; 
-    }else if (url.startsWith("upi://") || url.startsWith("intent://") || url.startsWith("tez://") || url.startsWith("phonepe://") || url.startsWith("paytmmp://")) {
-      Linking.openURL(url)
-        .catch((err) => {
-          console.error("Failed to open UPI intent:", err);
-          // Alert.alert("Error", "No UPI app found on your device.");
-        });
+    }else if (updateURL.startsWith("upi://") || updateURL.startsWith("intent://") || 
+    updateURL.startsWith("tez://") || updateURL.startsWith("phonepe://") || updateURL.startsWith("paytmmp://")) {
+      console.log("tex")
+      openGPay(updateURL)
+      // Linking.openURL(url)
+      //   .catch((err) => {
+      //     console.error("Failed to open UPI intent:", err);
+      //     // Alert.alert("Error", "No UPI app found on your device.");
+      //   });
       return false; // Prevent WebView from loading the UPI URL
     }else{
-      return false
+      console.log("elseeeeeee")
+      return true
+    }
+  };
+
+  const openGPay = async (url: string) => {
+    const supported = await Linking.canOpenURL(url);
+    if (supported) {
+      Linking.openURL(url);
+    } else {
+      console.error("Google Pay Not Installed");
     }
   };
 
@@ -53,16 +66,13 @@ const GQSecWebView: React.FC<GQSecWebViewProps> = ({ url, onClose }) => {
         <View style={styles.container}>
             <WebView
             ref={webViewRef}
-            originWhitelist={['*']}
             source={{ uri: url }}
             javaScriptEnabled={true}
             setSupportMultipleWindows={true}
             javaScriptCanOpenWindowsAutomatically={true}
-            onError={(syntheticEvent) => {
-              const { nativeEvent } = syntheticEvent;
-              console.warn('WebView error: ', nativeEvent);
-              // Alert.alert('Error', `WebView failed to load: ${nativeEvent.description}`);
-            }}
+            originWhitelist={['*']}
+            injectedJavaScriptBeforeContentLoaded={injectedJS}
+            
             onShouldStartLoadWithRequest={(request) => {
                 const { url } = request;
 
@@ -72,12 +82,33 @@ const GQSecWebView: React.FC<GQSecWebViewProps> = ({ url, onClose }) => {
                 if (url.startsWith("about:blank")) {
                   return false;
                 }
+
+                if(url.includes(Environment.getRedirectionURL())){
+                  onClose()
+                  return false; 
+              }
+               if (url.startsWith("upi://") || url.startsWith("intent://") || 
+               url.startsWith("tez://") || url.startsWith("phonepe://") || url.startsWith("paytmmp://") || 
+              url.startsWith("credpay://") || url.startsWith("bhim://") || url.startsWith("amazonpay://")) {
+                console.log("tex")
+                // openGPay(url)
+                Linking.openURL(url)
+                  .catch((err) => {
+                    console.error("Failed to open UPI intent:", err);
+                    // Alert.alert("Error", "No UPI app found on your device.");
+                  });
+                return false; // Prevent WebView from loading the UPI URL
+              }
       
                 // ✅ Allow normal URLs
                 return true;
               }}
-              injectedJavaScriptBeforeContentLoaded={injectedJS}
             onNavigationStateChange={onNavigationStateChange}
+            onError={(syntheticEvent) => {
+              const { nativeEvent } = syntheticEvent;
+              console.warn('WebView error: ', nativeEvent);
+              // Alert.alert('Error', `WebView failed to load: ${nativeEvent.description}`);
+            }}
             />
 
         </View>
