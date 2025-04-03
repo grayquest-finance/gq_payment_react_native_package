@@ -27,11 +27,24 @@ export default function App() {
     // },
 
      // Edunext
-     auth: {
-      client_id: '<KEY>',
-      client_secret_key: '<KEY>',
-      gq_api_key: '<KEY>'
-    },
+    //  auth: {
+    //   client_id: '<KEY>',
+    //   client_secret_key: '<KEY>',
+    //   gq_api_key: '<KEY>'
+    // },
+
+      // auth: {
+      //   client_id: '<KEY>',
+      //   client_secret_key: '<KEY>',
+      //   gq_api_key: '<KEY>'
+      // },
+
+      // avinash live 
+      auth: {
+        client_id: '<KEY>',
+        client_secret_key: '<KEY>',
+        gq_api_key: '<KEY>'
+      },
 
     // auth: {
     //   client_id: '<KEY>',
@@ -44,10 +57,10 @@ export default function App() {
     //   client_secret_key: '<KEY>',
     //   gq_api_key: '<KEY>'
     // },
-    env: "stage",
-    student_id: 'std_121000124',
-    customer_number: '8425900opj',
-    // reference_id: '',
+    env: "live",
+    student_id: 'demo7896',
+    customer_number: '8425900003',
+    reference_id: 'ref123456',
     // emi_plan_id: "131873",
     // udf_details: {
     //   "udf_1":"dsdsdsd"
@@ -58,13 +71,16 @@ export default function App() {
     //   "direct": 5
     // },
     fee_headers: {
-      "student_fee": 15000,
+      // "student_fee": 15000,
+      "Payabel EMI": 100000,
+      "Payabel AD": 50000,
+      "Payabel PG": 10
     },
-    pp_config: {
+    // pp_config: {
       // slug: "purva-gile"
-      slug: "edunext"
+      // slug: "edunext"
       // slug: "arjun-gile"
-    },
+    // },
     payment_methods: "['credit_card', 'net_banking']",
     // fee_headers_split : {
     //   monthly_emi: {
