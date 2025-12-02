@@ -9,7 +9,6 @@ import GQSecWebView from './GQSecWebView';
 
 import {
   CFSession,
-  CFEnvironment,
 } from 'cashfree-pg-api-contract';
 
 
@@ -125,16 +124,16 @@ const GQWebView: React.FC<GQWebViewProps> = ({ url, sdkSuccess, sdkCancel, sdkEr
     try {
         // console.log("Message from web "+event.nativeEvent.data);
       const messageData = JSON.parse(event.nativeEvent.data);
-      // console.log('Received from Web:', messageData);
+      console.log('Received from Web:', messageData);
 
       const eventType = messageData.eventType
-      // console.log( `EventType: ${eventType}`)
+      console.log( `EventType: ${eventType}`)
 
       if(eventType!=null && eventType=='sendPGOptions'){
         name = messageData.name
         console.log( `name : ${name}`)
         const pgOptions = messageData.pgOptions
-        // console.log(`pgOptions: ${JSON.stringify(pgOptions)}`)
+        console.log(`pgOptions: ${JSON.stringify(pgOptions)}`)
         if(name=='UNIPG'){
           handleUNIPG(pgOptions);
         }else if(name=='CASHFREE'){
