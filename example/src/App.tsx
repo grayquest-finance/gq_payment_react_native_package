@@ -1,65 +1,21 @@
 import { useState } from 'react';
 import { SafeAreaView, StyleSheet, View, Button, Modal } from 'react-native';
-import GQPaymentSDK from 'gq_payment_react_native_package';
+import GQPaymentSDK from '../../src/GQPaymentSDK';
+import GQTokenCheckout from '../../src/GQTokenCheckout';
 
 export default function App() {
   const [GQSDKInititate, setGQSDKInititate] = useState(false);
 
   const clientObject = {
-    // auth: {
-    //   client_id: 'GQ-d9167506-30ac-4a0d-bb61-8e487a596c43',
-    //   client_secret_key: '4a937d7a-5b41-445c-94ae-4289efff2237',
-    //   gq_api_key: '513476f6-dfa9-4bc4-9ae3-8da925a1207d'
-    // },
-
-    // pranit-1
-    // auth: {
-    //   client_id: 'GQ-d9167506-30ac-4a0d-bb61-8e487a596c43',
-    //   client_secret_key: '4a937d7a-5b41-445c-94ae-4289efff2237',
-    //   gq_api_key: '513476f6-dfa9-4bc4-9ae3-8da925a1207d'
-    // },
-
-    // Edunext
-    // auth: {
-    //   client_id: 'GQ-a194690e-c1f8-483c-9d83-2a2fd737b021',
-    //   client_secret_key: '94c35f29-84fe-4a50-a752-f4328b9b850d',
-    //   gq_api_key: 'f4877340-0771-46d7-bb60-a582afc610c7'
-    // },
-
-     // Edunext
-    //  auth: {
-    //   client_id: 'GQ-a194690e-c1f8-483c-9d83-2a2fd737b021',
-    //   client_secret_key: '94c35f29-84fe-4a50-a752-f4328b9b850d',
-    //   gq_api_key: 'f4877340-0771-46d7-bb60-a582afc610c7'
-    // },
-
-      // auth: {
-      //   client_id: 'GQ-0f81714a-902e-480b-a7cf-dc6efa2c7c3f',
-      //   client_secret_key: '44c4d4ea-a40b-44a2-a1e2-67a77ae1e245',
-      //   gq_api_key: 'fba2411b-ed05-4820-878d-a42c4475efac'
-      // },
-
       // avinash live 
       auth: {
-        client_id: 'GQ-d5b973bc-015f-468b-940b-edd7c9ed4b7d',
-        client_secret_key: '190ed75a-3108-45b6-8da5-c9da9f85054d',
-        gq_api_key: '2ebc4f3f-0e04-4bbc-b904-7fe6838fd2e4'
+        client_id: 'GQ-9857f27a-4b3d-413b-9003-6df521e81d2f',
+        client_secret_key: '8c9dc263-049e-435d-9145-941789ecd694',
+        gq_api_key: '163d3711-efd6-4306-b9c9-241a17b47ff5'
       },
-
-    // auth: {
-    //   client_id: 'GQ-0f81714a-902e-480b-a7cf-dc6efa2c7c3f',
-    //   client_secret_key: '44c4d4ea-a40b-44a2-a1e2-67a77ae1e245',
-    //   gq_api_key: 'fba2411b-ed05-4820-878d-a42c4475efac'
-    // },
-
-    // auth: {
-    //   client_id: 'GQ-d9167506-30ac-4a0d-bb61-8e487a596c43',
-    //   client_secret_key: '4a937d7a-5b41-445c-94ae-4289efff2237',
-    //   gq_api_key: '513476f6-dfa9-4bc4-9ae3-8da925a1207d'
-    // },
     env: "live",
-    student_id: 'demo7896',
-    customer_number: '8425900003',
+    student_id: 'demo7899',
+    customer_number: '8425900004',
     reference_id: 'ref123456',
     // emi_plan_id: "131873",
     // udf_details: {
@@ -71,17 +27,17 @@ export default function App() {
     //   "direct": 5
     // },
     fee_headers: {
-      // "student_fee": 15000,
-      "Payabel EMI": 100000,
-      "Payabel AD": 50000,
-      "Payabel PG": 10
+      "student_fee": 10,
+      // "Payabel EMI": 100000,
+      // "Payabel AD": 50000,
+      // "Payabel PG": 10
     },
     // pp_config: {
       // slug: "purva-gile"
       // slug: "edunext"
       // slug: "arjun-gile"
     // },
-    payment_methods: "['credit_card', 'net_banking']",
+    // payment_methods: "['credit_card', 'net_banking']",
     // fee_headers_split : {
     //   monthly_emi: {
     //     "bank_id": "ABC123R",
@@ -112,7 +68,7 @@ export default function App() {
 
   // Handle success callback
   const handleSuccess = (data: object) => {
-    console.log('Success:', data);
+    console.log('SuccessApp:', data);
     // Alert.alert('Success', JSON.stringify(data));
   };
 
@@ -123,12 +79,15 @@ export default function App() {
     // setGQSDKInititate(false)
   };
 
-  // Handle failure callback
+  // Handle failure callback̦̦̦̦̦
   const handleCancel = (data: object) => {
     console.log('Cancel:', data);
     // Alert.alert('Cancel', JSON.stringify(data));
-    setGQSDKInititate(false)
+    setGQSDKInititate(false);
   };
+
+  const env = 'test';
+  const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzZXNzaW9uX2NvZGUiOiI4NDlmNmY2ZS01YzE0LTRmNmEtOGE5NC02MmEwYmE1OWMzYjQiLCJleHAiOjE3NjIyNjIzODgsImlhdCI6MTc2MjI2MTQ4OH0.mq3OgcyvUj9jaK_njLXsQQqJKDa7ugBkOZ_lo0gF_vA';
 
   return (
     <SafeAreaView style={styles.container}>
@@ -148,6 +107,14 @@ export default function App() {
             onFailed={handleFailure}
             onCancel= {handleCancel}
             />
+
+            {/* <GQTokenCheckout
+              token={token}
+              environment={env}
+              onSuccess={handleSuccess}
+              onFailed={handleFailure}
+              onCancel= {handleCancel}
+            /> */}
           </View>
         </Modal>
     </SafeAreaView>

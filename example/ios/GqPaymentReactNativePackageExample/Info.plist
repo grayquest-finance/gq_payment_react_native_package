@@ -47,6 +47,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 	<key>LSApplicationQueriesSchemes</key>
   <array>
    <string>bhim</string>
@@ -55,6 +56,5 @@
    <string>tez</string>
    <string>credpay</string>
   </array>
-	<false/>
 </dict>
 </plist>

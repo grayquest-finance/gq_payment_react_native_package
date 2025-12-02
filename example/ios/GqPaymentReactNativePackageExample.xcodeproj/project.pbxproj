@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* GqPaymentReactNativePackageExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* GqPaymentReactNativePackageExampleTests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-GqPaymentReactNativePackageExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-GqPaymentReactNativePackageExample.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7699B88040F8A987B510C191 /* libPods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.a */; };
+		6D9B2A3DD55B9C5A223D9665 /* Pods_GqPaymentReactNativePackageExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F4E4699097EE4C7D937B1A /* Pods_GqPaymentReactNativePackageExample.framework */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		C7522170365F7DBFBDA085F1 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 3AC5737146CD56FF8C613127 /* PrivacyInfo.xcprivacy */; };
+		CA34D82C46B9D19B46E23460 /* Pods_GqPaymentReactNativePackageExample_GqPaymentReactNativePackageExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5847EEB8C014000860541660 /* Pods_GqPaymentReactNativePackageExample_GqPaymentReactNativePackageExampleTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,14 +38,14 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = GqPaymentReactNativePackageExample/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = GqPaymentReactNativePackageExample/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = GqPaymentReactNativePackageExample/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3AC5737146CD56FF8C613127 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = GqPaymentReactNativePackageExample/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		3B4392A12AC88292D35C810B /* Pods-GqPaymentReactNativePackageExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GqPaymentReactNativePackageExample.debug.xcconfig"; path = "Target Support Files/Pods-GqPaymentReactNativePackageExample/Pods-GqPaymentReactNativePackageExample.debug.xcconfig"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-GqPaymentReactNativePackageExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GqPaymentReactNativePackageExample.release.xcconfig"; path = "Target Support Files/Pods-GqPaymentReactNativePackageExample/Pods-GqPaymentReactNativePackageExample.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests/Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-GqPaymentReactNativePackageExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GqPaymentReactNativePackageExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E363FE00F23925C91C022CF /* Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests/Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3AC5737146CD56FF8C613127 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = GqPaymentReactNativePackageExample/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		5847EEB8C014000860541660 /* Pods_GqPaymentReactNativePackageExample_GqPaymentReactNativePackageExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GqPaymentReactNativePackageExample_GqPaymentReactNativePackageExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = GqPaymentReactNativePackageExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.release.xcconfig"; path = "Target Support Files/Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests/Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		8A641B98D04A6912DAACF840 /* Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.release.xcconfig"; path = "Target Support Files/Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests/Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		A3618D911261757540CDE429 /* Pods-GqPaymentReactNativePackageExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GqPaymentReactNativePackageExample.release.xcconfig"; path = "Target Support Files/Pods-GqPaymentReactNativePackageExample/Pods-GqPaymentReactNativePackageExample.release.xcconfig"; sourceTree = "<group>"; };
+		D00280165DE804EB55A608D4 /* Pods-GqPaymentReactNativePackageExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GqPaymentReactNativePackageExample.debug.xcconfig"; path = "Target Support Files/Pods-GqPaymentReactNativePackageExample/Pods-GqPaymentReactNativePackageExample.debug.xcconfig"; sourceTree = "<group>"; };
+		E0F4E4699097EE4C7D937B1A /* Pods_GqPaymentReactNativePackageExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GqPaymentReactNativePackageExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -54,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.a in Frameworks */,
+				CA34D82C46B9D19B46E23460 /* Pods_GqPaymentReactNativePackageExample_GqPaymentReactNativePackageExampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-GqPaymentReactNativePackageExample.a in Frameworks */,
+				6D9B2A3DD55B9C5A223D9665 /* Pods_GqPaymentReactNativePackageExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,8 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-GqPaymentReactNativePackageExample.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.a */,
+				E0F4E4699097EE4C7D937B1A /* Pods_GqPaymentReactNativePackageExample.framework */,
+				5847EEB8C014000860541660 /* Pods_GqPaymentReactNativePackageExample_GqPaymentReactNativePackageExampleTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -145,10 +145,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-GqPaymentReactNativePackageExample.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-GqPaymentReactNativePackageExample.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.release.xcconfig */,
+				D00280165DE804EB55A608D4 /* Pods-GqPaymentReactNativePackageExample.debug.xcconfig */,
+				A3618D911261757540CDE429 /* Pods-GqPaymentReactNativePackageExample.release.xcconfig */,
+				1E363FE00F23925C91C022CF /* Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.debug.xcconfig */,
+				8A641B98D04A6912DAACF840 /* Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -160,12 +160,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "GqPaymentReactNativePackageExampleTests" */;
 			buildPhases = (
-				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
+				80E84BAAFD48C71831954751 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */,
-				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+				45AC2F1988C86D898CBAF13D /* [CP] Embed Pods Frameworks */,
+				975BA19AFEC22402660A771A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -181,13 +181,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "GqPaymentReactNativePackageExample" */;
 			buildPhases = (
-				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				3367EE8F352823BF74404193 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				3E813F64D46655723744E9DF /* [CP] Embed Pods Frameworks */,
+				BA8A82775128B4FE2DF08D24 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -271,46 +271,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GqPaymentReactNativePackageExample/Pods-GqPaymentReactNativePackageExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GqPaymentReactNativePackageExample/Pods-GqPaymentReactNativePackageExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GqPaymentReactNativePackageExample/Pods-GqPaymentReactNativePackageExample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+		3367EE8F352823BF74404193 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -332,7 +293,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */ = {
+		3E813F64D46655723744E9DF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GqPaymentReactNativePackageExample/Pods-GqPaymentReactNativePackageExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GqPaymentReactNativePackageExample/Pods-GqPaymentReactNativePackageExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GqPaymentReactNativePackageExample/Pods-GqPaymentReactNativePackageExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		45AC2F1988C86D898CBAF13D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -349,24 +327,29 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests/Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
+		80E84BAAFD48C71831954751 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GqPaymentReactNativePackageExample/Pods-GqPaymentReactNativePackageExample-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GqPaymentReactNativePackageExample/Pods-GqPaymentReactNativePackageExample-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GqPaymentReactNativePackageExample/Pods-GqPaymentReactNativePackageExample-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
+		975BA19AFEC22402660A771A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -381,6 +364,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests/Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA8A82775128B4FE2DF08D24 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GqPaymentReactNativePackageExample/Pods-GqPaymentReactNativePackageExample-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GqPaymentReactNativePackageExample/Pods-GqPaymentReactNativePackageExample-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GqPaymentReactNativePackageExample/Pods-GqPaymentReactNativePackageExample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -416,7 +416,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.debug.xcconfig */;
+			baseConfigurationReference = 1E363FE00F23925C91C022CF /* Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -443,7 +443,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.release.xcconfig */;
+			baseConfigurationReference = 8A641B98D04A6912DAACF840 /* Pods-GqPaymentReactNativePackageExample-GqPaymentReactNativePackageExampleTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -467,11 +467,12 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-GqPaymentReactNativePackageExample.debug.xcconfig */;
+			baseConfigurationReference = D00280165DE804EB55A608D4 /* Pods-GqPaymentReactNativePackageExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HWWL8VC89L;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = GqPaymentReactNativePackageExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -494,11 +495,12 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-GqPaymentReactNativePackageExample.release.xcconfig */;
+			baseConfigurationReference = A3618D911261757540CDE429 /* Pods-GqPaymentReactNativePackageExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HWWL8VC89L;
 				INFOPLIST_FILE = GqPaymentReactNativePackageExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -568,6 +570,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD = "";
 				LDPLUSPLUS = "";
@@ -645,6 +658,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD = "";
 				LDPLUSPLUS = "";
