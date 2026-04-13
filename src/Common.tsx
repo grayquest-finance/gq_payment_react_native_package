@@ -24,12 +24,10 @@ export const Common  = {
                 isValid = false;
                 errormessage += "Client Id is Required, ";
               }
-              
               if (!('client_secret_key' in auth)) {
                 isValid = false;
                 errormessage += "Client Secret Key is Required, ";
               }
-              
               if (!('gq_api_key' in auth)) {
                 isValid = false;
                 errormessage += "GQ API Key is Required, ";
@@ -96,7 +94,7 @@ export const Common  = {
     isValidEnv(env: any): boolean{
         if(env == "test" || env == "stage" || env == "preprod" || env == "live")
             return true;
-        else 
+        else
             return false;
     },
 
@@ -111,6 +109,70 @@ export const Common  = {
 
     encodeBase64(str: any): string {
         return base64.encode(str);;
+    },
+
+    async sessionCodemakeApiCall(token: any): Promise<any>{
+        const url = Environment.getbaseURL()+Environment.GET_SESSION_CODE_API;
+
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+
+        try{
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: headers
+            });
+
+            const contentType = response.headers.get('content-type');
+
+            // if (!response.ok) {
+            //     // Handle non-2xx responses
+            //     const data = await response.json();
+            //     // console.log("ErrorResponse: "+data);
+            //     console.log("ErrorResponse: "+JSON.stringify(data));
+            //     throw new Error(JSON.stringify(data));
+            // }
+
+            if (contentType && contentType.includes('application/json')) {
+                // Parse JSON response
+                const data = await response.json();
+                // return data;
+
+                // if (response.ok) {
+                //     console.log("SuccessResponse: "+data);
+                //     console.log("SuccessResponse: "+JSON.stringify(data));
+                // } else {
+                //     console.log("ErrorResponse: "+data);
+                //     console.log("ErrorResponse: "+JSON.stringify(data));
+                // }
+
+                return data; // Return the API response data
+            } else {
+                // Handle non-JSON response
+                const textData = await response.text();
+                // console.error('Unexpected non-JSON response:', textData);
+                // throw new Error('Received non-JSON response');
+                return textData;
+            }
+
+            // const responseData = await response.json();
+
+
+            // if (response.ok) {
+            //     console.log("SuccessResponse: "+responseData);
+            //     console.log("SuccessResponse: "+JSON.stringify(responseData));
+            // } else {
+            //     console.log("ErrorResponse: "+responseData);
+            //     console.log("ErrorResponse: "+JSON.stringify(responseData));
+            // }
+
+            // return responseData; // Return the API response data
+        }catch(error){
+            console.error('API call error:', error);
+            throw error; // Rethrow the error to be handled by the caller
+        }
     },
 
     async makeApiCall(number: any, client_id: any, client_secret_key: any, gq_api_key: any): Promise<any>{
@@ -147,7 +209,6 @@ export const Common  = {
             //     console.log("ErrorResponse: "+JSON.stringify(data));
             //     throw new Error(JSON.stringify(data));
             // }
-        
             if (contentType && contentType.includes('application/json')) {
                 // Parse JSON response
                 const data = await response.json();
@@ -160,7 +221,6 @@ export const Common  = {
                 //     console.log("ErrorResponse: "+data);
                 //     console.log("ErrorResponse: "+JSON.stringify(data));
                 // }
-    
                 return data; // Return the API response data
             } else {
                 // Handle non-JSON response
@@ -172,7 +232,6 @@ export const Common  = {
 
             // const responseData = await response.json();
 
-            
             // if (response.ok) {
             //     console.log("SuccessResponse: "+responseData);
             //     console.log("SuccessResponse: "+JSON.stringify(responseData));

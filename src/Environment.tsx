@@ -24,8 +24,9 @@ const cashfreeEnvState = {
 }
 
 export const Environment = {
-    
+
     CREATE_CUSTOMER_API: 'v1/customer/create-customer',
+    GET_SESSION_CODE_API: 'v1/pp/get-session-data',
     VERSION: "\"1.1\"",
 
     setEnvironment(env: any): any {
@@ -37,8 +38,8 @@ export const Environment = {
                 cashfreeEnvState.CASHFREE_ENV = CFEnvironment.SANDBOX
             return (environmentState.environment = "stage");
             case "preprod":
-                baseURLState.BASE_URL = "https://erp-api-preprod.graydev.tech/";// Base URL for PREPROD Environment
-                webBaseURLState.WEB_BASE_URL = "https://erp-sdk-preprod.graydev.tech/";// Base Web URL for PREPROD Environment
+                baseURLState.BASE_URL = "https://erp-api.ppd.graydev.in/";// Base URL for PREPROD Environment
+                webBaseURLState.WEB_BASE_URL = "https://erp-sdk.ppd.graydev.in/";// Base Web URL for PREPROD Environment
                 redirectionURLState.REDIRECTION_URL = "svc-dp-preprod.graydev.tech";// Redirection URL for PREPROD Environment
                 cashfreeEnvState.CASHFREE_ENV = CFEnvironment.PRODUCTION
             return environmentState.environment = "preprod";
@@ -49,9 +50,9 @@ export const Environment = {
                 cashfreeEnvState.CASHFREE_ENV = CFEnvironment.PRODUCTION
             return environmentState.environment = "live";
             default:
-                baseURLState.BASE_URL = "https://erp-api.graydev.tech/";// Base URL for UAT Environment
-                webBaseURLState.WEB_BASE_URL = "https://erp-sdk.graydev.tech/";// Base Web URL for UAT Environment
-                redirectionURLState.REDIRECTION_URL = "svc-dp.graydev.tech";// Redirection URL for UAT Environment
+                baseURLState.BASE_URL = "https://erp-api.uat.graydev.in/";// Base URL for UAT Environment
+                webBaseURLState.WEB_BASE_URL = "https://erp-sdk.uat.graydev.in/";// Base Web URL for UAT Environment
+                redirectionURLState.REDIRECTION_URL = "svc-dp.uat.graydev.in/";// Redirection URL for UAT Environment
                 cashfreeEnvState.CASHFREE_ENV = CFEnvironment.SANDBOX
                 return environmentState.environment = "test";
         }
