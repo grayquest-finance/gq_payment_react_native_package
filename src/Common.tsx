@@ -121,9 +121,9 @@ export const Common  = {
         }
 
         const base64 = this.encodeBase64(`${client_id}:${client_secret_key}`)
-        console.log("base64: "+base64);
+        // console.log("base64: "+base64);
 
-        console.log("API URL: "+url);
+        // console.log("API URL: "+url);
 
         const headers = {
             'Content-Type': 'application/json',
@@ -153,13 +153,13 @@ export const Common  = {
                 const data = await response.json();
                 // return data;
 
-                if (response.ok) {
-                    console.log("SuccessResponse: "+data);
-                    console.log("SuccessResponse: "+JSON.stringify(data));
-                } else {
-                    console.log("ErrorResponse: "+data);
-                    console.log("ErrorResponse: "+JSON.stringify(data));
-                }
+                // if (response.ok) {
+                //     console.log("SuccessResponse: "+data);
+                //     console.log("SuccessResponse: "+JSON.stringify(data));
+                // } else {
+                //     console.log("ErrorResponse: "+data);
+                //     console.log("ErrorResponse: "+JSON.stringify(data));
+                // }
     
                 return data; // Return the API response data
             } else {

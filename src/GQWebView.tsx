@@ -1,17 +1,17 @@
-import React, { useRef, useEffect } from 'react';
-import { View, StyleSheet, Alert } from 'react-native';
+import React, { useRef, useEffect, useState } from 'react';
+import { View, StyleSheet, Alert, Modal, Platform, StatusBar, SafeAreaView } from 'react-native';
 import { WebView } from 'react-native-webview';
 import type { WebViewMessageEvent } from 'react-native-webview';
 
 import RazorpayCheckout from 'react-native-razorpay';
 
+import GQSecWebView from './GQSecWebView';
+
 import {
-  CFDropCheckoutPayment,
-  CFPaymentComponentBuilder,
-  CFPaymentModes,
   CFSession,
-  CFThemeBuilder,
+  CFEnvironment,
 } from 'cashfree-pg-api-contract';
+
 
 import {
   CFErrorResponse,
@@ -27,8 +27,10 @@ interface GQWebViewProps{
 }
 
 const GQWebView: React.FC<GQWebViewProps> = ({ url, sdkSuccess, sdkCancel, sdkError }) => {
+  const [secWebviewVisible, setSecWebviewVisible] = useState(false);
+  const [changeURL, setChangeURL] = useState("");
     const webViewRef = useRef<WebView>(null); // Reference to the WebView
-    console.log("Webview LoadURl: "+url);
+    // console.log("Webview LoadURl: "+url);
 
     let name;
 
@@ -39,19 +41,19 @@ const GQWebView: React.FC<GQWebViewProps> = ({ url, sdkSuccess, sdkCancel, sdkEr
           'status': 'SUCCESS',
           'order_code': orderID
         }
-        console.log('orderId is :' + orderID);
+        // console.log('orderId is :' + orderID);
         webViewRef.current?.injectJavaScript(`sendPGPaymentResponse(${JSON.stringify(paymentVerify)});`);
       };
   
       const onError = (error: CFErrorResponse, orderID: string) => {
-        console.log(
-          'exception is : ' + JSON.stringify(error) + '\norderId is :' + orderID,
-        );
-        console.log(`CashFailure-OrderCode: ${orderID}`)
-        console.log(`CashFailure-Status: ${error.getStatus()}`)
-        console.log(`CashFailure-Message: ${error.getMessage()}`)
-        console.log(`CashFailure-Code: ${error.getCode()}`)
-        console.log(`CashFailure-type: ${error.getType()}`)
+        // console.log(
+        //   'exception is : ' + JSON.stringify(error) + '\norderId is :' + orderID,
+        // );
+        // console.log(`CashFailure-OrderCode: ${orderID}`)
+        // console.log(`CashFailure-Status: ${error.getStatus()}`)
+        // console.log(`CashFailure-Message: ${error.getMessage()}`)
+        // console.log(`CashFailure-Code: ${error.getCode()}`)
+        // console.log(`CashFailure-type: ${error.getType()}`)
         const paymentVerify = {
           'order_code': orderID,
           'status': error.getStatus(),
@@ -65,7 +67,7 @@ const GQWebView: React.FC<GQWebViewProps> = ({ url, sdkSuccess, sdkCancel, sdkEr
       // CFPaymentGatewayService.setEventSubscriber({onReceivedEvent});
       CFPaymentGatewayService.setCallback({onVerify, onError});
       return () => {
-        console.log('UNMOUNTED');
+        // console.log('UNMOUNTED');
         CFPaymentGatewayService.removeCallback();
         CFPaymentGatewayService.removeEventSubscriber();
       };
@@ -73,29 +75,37 @@ const GQWebView: React.FC<GQWebViewProps> = ({ url, sdkSuccess, sdkCancel, sdkEr
 
     const _startCheckout = async (orderid: string, sessionid: string ) => {
       try {
-        const session = getSession(orderid, sessionid);
-        const paymentModes = new CFPaymentComponentBuilder()
-          .add(CFPaymentModes.CARD)
-          .add(CFPaymentModes.UPI)
-          .add(CFPaymentModes.NB)
-          .add(CFPaymentModes.WALLET)
-          .build();
-        const theme = new CFThemeBuilder()
-          .setNavigationBarBackgroundColor('#4563cb')
-          .setNavigationBarTextColor('#FFFFFF')
-          .setButtonBackgroundColor('#4563cb')
-          .setButtonTextColor('#FFFFFF')
-          .setPrimaryTextColor('#000000')
-          .setSecondaryTextColor('#000000')
-          .build();
-        const dropPayment = new CFDropCheckoutPayment(
-          session,
-          paymentModes,
-          theme,
+        // const session = getSession(orderid, sessionid);
+        // const paymentModes = new CFPaymentComponentBuilder()
+        //   .add(CFPaymentModes.CARD)
+        //   .add(CFPaymentModes.UPI)
+        //   .add(CFPaymentModes.NB)
+        //   .add(CFPaymentModes.WALLET)
+        //   .build();
+        // const theme = new CFThemeBuilder()
+        //   .setNavigationBarBackgroundColor('#4563cb')
+        //   .setNavigationBarTextColor('#FFFFFF')
+        //   .setButtonBackgroundColor('#4563cb')
+        //   .setButtonTextColor('#FFFFFF')
+        //   .setPrimaryTextColor('#000000')
+        //   .setSecondaryTextColor('#000000')
+        //   .build();
+        // const dropPayment = new CFDropCheckoutPayment(
+        //   session,
+        //   paymentModes,
+        //   theme,
+        // );
+
+        const session = new CFSession(
+          sessionid,
+          orderid,
+          Environment.getCashfreeEnv(),
         );
-        console.log(JSON.stringify(dropPayment));
-        CFPaymentGatewayService.doPayment(dropPayment);
-      } catch (e) {
+        console.log('Session', JSON.stringify(session));
+        console.log('Session', getSession(orderid, sessionid));
+        // console.log(JSON.stringify(dropPayment));
+        CFPaymentGatewayService.doWebPayment(getSession(orderid, sessionid));
+      } catch (e: any) {
         console.log(e);
       }
     };
@@ -115,35 +125,37 @@ const GQWebView: React.FC<GQWebViewProps> = ({ url, sdkSuccess, sdkCancel, sdkEr
     try {
         // console.log("Message from web "+event.nativeEvent.data);
       const messageData = JSON.parse(event.nativeEvent.data);
-      console.log('Received from Web:', messageData);
+      // console.log('Received from Web:', messageData);
 
       const eventType = messageData.eventType
-      console.log( `EventType: ${eventType}`)
+      // console.log( `EventType: ${eventType}`)
 
       if(eventType!=null && eventType=='sendPGOptions'){
         name = messageData.name
         console.log( `name : ${name}`)
         const pgOptions = messageData.pgOptions
-        console.log(`pgOptions: ${JSON.stringify(pgOptions)}`)
+        // console.log(`pgOptions: ${JSON.stringify(pgOptions)}`)
         if(name=='UNIPG'){
           handleUNIPG(pgOptions);
         }else if(name=='CASHFREE'){
           handleCashFree(pgOptions)
+        }else {
+          handleRedirection(pgOptions)
         }
       }else if(eventType!=null && eventType=='sendADOptions'){
-        console.log( `Ad Option Details: ${JSON.stringify(messageData)}` )
+        // console.log( `Ad Option Details: ${JSON.stringify(messageData)}` )
         handleAD(messageData)
       }else if(eventType!=null && eventType=='sdkSuccess'){
         delete messageData['eventType']
-        console.log(`sdkSuccess details from web: ${JSON.stringify(messageData)}`)
+        // console.log(`sdkSuccess details from web: ${JSON.stringify(messageData)}`)
         sdkSuccess(JSON.stringify(messageData));
       } else if(eventType!=null && eventType=='sdkCancel'){
         delete messageData['eventType']
-        console.log(`sdkCancel details from web: ${JSON.stringify(messageData)}`)
+        // console.log(`sdkCancel details from web: ${JSON.stringify(messageData)}`)
         sdkCancel(JSON.stringify(messageData))
       }else if(eventType!=null && eventType=='sdkError'){
         delete messageData['eventType']
-        console.log(`sdkError details from web ${messageData}`)
+        // console.log(`sdkError details from web ${messageData}`)
         sdkError(JSON.stringify(messageData));
       }
 
@@ -152,24 +164,31 @@ const GQWebView: React.FC<GQWebViewProps> = ({ url, sdkSuccess, sdkCancel, sdkEr
         Alert.alert('WebView Message', `Received action: ${messageData.action}`);
       }
     } catch (error) {
-      console.error('Failed to parse message from WebView:', error);
+      // console.error('Failed to parse message from WebView:', error);
     }
   };
 
   const handleCashFree = (object: any) => {
     const order_code = object.order_code;
-    console.log(`CashOrderCode: ${order_code}`)
+    // console.log(`CashOrderCode: ${order_code}`)
     const payment_session_id = object.payment_session_id
-    console.log( `CashPaymentSessionId: ${payment_session_id}` );
+    // console.log( `CashPaymentSessionId: ${payment_session_id}` );
     _startCheckout(order_code, payment_session_id);
+  }
+
+  const handleRedirection = (object: any) => {
+    const payment_link_web = object.payment_link_web
+    // console.log(`payment_link_web: ${payment_link_web}`)
+    setChangeURL(payment_link_web)
+    setSecWebviewVisible(true)
   }
 
   const handleUNIPG = (details: any) => {
 
-    console.log(`KEY: ${details.key}`)
+    // console.log(`KEY: ${details.key}`)
     const prefill = details.prefill;
-    console.log(`Prefill: ${JSON.stringify(prefill)}`)
-    console.log(`prefill_contact: ${prefill.contact}`)
+    // console.log(`Prefill: ${JSON.stringify(prefill)}`)
+    // console.log(`prefill_contact: ${prefill.contact}`)
 
     var options = {
       description: '',
@@ -189,20 +208,20 @@ const GQWebView: React.FC<GQWebViewProps> = ({ url, sdkSuccess, sdkCancel, sdkEr
     }
     
     RazorpayCheckout.open(options).then((data) => {
-      console.log(`PaymentSuccess: ${data}`)
-      console.log(`PaymentSuccess: ${JSON.stringify(data)}`)
+      // console.log(`PaymentSuccess: ${data}`)
+      // console.log(`PaymentSuccess: ${JSON.stringify(data)}`)
       webViewRef.current?.injectJavaScript(`sendPGPaymentResponse(${JSON.stringify(data)})`);
     }).catch((error) => {
-      console.log(`PaymentFail: ${JSON.stringify(error)}`)
+      // console.log(`PaymentFail: ${JSON.stringify(error)}`)
       webViewRef.current?.injectJavaScript(`sendPGPaymentResponse(${JSON.stringify(error)})`);
     });
   }
 
   const handleAD = (details: any) => {
 
-    console.log(`KEY: ${details.key}`)
+    // console.log(`KEY: ${details.key}`)
     const callback_url = details.callback_url
-    console.log(`CallBackURl: ${callback_url}`)
+    // console.log(`CallBackURl: ${callback_url}`)
     let recurring = false;
     if(details.recurring=="1"){
       recurring = true;
@@ -225,19 +244,24 @@ const GQWebView: React.FC<GQWebViewProps> = ({ url, sdkSuccess, sdkCancel, sdkEr
     }
     
     RazorpayCheckout.open(options).then((data) => {
-      console.log(`ADSuccess: ${data}`)
-      console.log(`ADSuccess: ${JSON.stringify(data)}`)
+      // console.log(`ADSuccess: ${data}`)
+      // console.log(`ADSuccess: ${JSON.stringify(data)}`)
       webViewRef.current?.injectJavaScript(`sendADPaymentResponse(${callback_url}, ${JSON.stringify(data)})`);
     }).catch((error) => {
       const jsonObject = error
       jsonObject.callback_url = callback_url
-      console.log(`AdPaymentError: ${JSON.stringify(jsonObject)}`)
+      // console.log(`AdPaymentError: ${JSON.stringify(jsonObject)}`)
       webViewRef.current?.injectJavaScript(`sendADPaymentResponse(${JSON.stringify(jsonObject)})`);
     });
   }
 
-  console.log('Webview Loaded from GQWebView');
+  const handleSecWebClose = () => {
+    setSecWebviewVisible(false)
+  }
+
+  // console.log('Webview Loaded from GQWebView');
     return(
+      <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.container}>
             <WebView
                 ref={webViewRef}
@@ -245,21 +269,39 @@ const GQWebView: React.FC<GQWebViewProps> = ({ url, sdkSuccess, sdkCancel, sdkEr
                 style={{ flex: 1 }}
                 onError={(syntheticEvent) => {
                     const { nativeEvent } = syntheticEvent;
-                    console.warn('WebView error: ', nativeEvent);
+                    // console.warn('WebView error: ', nativeEvent);
                     Alert.alert('Error', `WebView failed to load: ${nativeEvent.description}`);
                   }}
-                  onLoadStart={() => console.log('WebView started loading')}
-                  onLoadEnd={() => console.log('WebView finished loading')}
+                  // onLoadStart={() => console.log('WebView started loading')}
+                  // onLoadEnd={() => console.log('WebView finished loading')}
                   onMessage={onMessage} // Handle messages from the web page
             />
+
+            {/* Modal for WebView */}
+            <Modal
+              visible={secWebviewVisible}
+              animationType="slide"
+              onRequestClose={() => setSecWebviewVisible((false))}
+            >
+              <View style={styles.webviewContainer}>
+                <GQSecWebView url= {changeURL} 
+                onClose={handleSecWebClose}
+                />
+              </View>
+            </Modal>
         </View>
+        </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
-    }
+        flex: 1,
+        marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0, 
+    },
+    webviewContainer: {
+      flex: 1,
+    },
 });
 
 export default GQWebView;

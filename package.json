@@ -1,6 +1,6 @@
 {
   "name": "gq_payment_react_native_package",
-  "version": "0.1.2",
+  "version": "0.1.7",
   "description": "The SDK is an integrated flow in ERP that will enable users to avail multiple payment options in a seamless manner, with faster integration and deployment times.",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
@@ -188,7 +188,7 @@
   },
   "dependencies": {
     "react-native-base64": "^0.2.1",
-    "react-native-cashfree-pg-sdk": "^2.1.15",
+    "react-native-cashfree-pg-sdk": "^2.1.21",
     "react-native-razorpay": "^2.3.0",
     "react-native-webview": "^13.12.2"
   }
