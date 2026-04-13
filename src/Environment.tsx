@@ -24,7 +24,7 @@ const cashfreeEnvState = {
 }
 
 export const Environment = {
-    
+
     CREATE_CUSTOMER_API: 'v1/customer/create-customer',
     GET_SESSION_CODE_API: 'v1/pp/get-session-data',
     VERSION: "\"1.1\"",

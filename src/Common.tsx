@@ -24,12 +24,12 @@ export const Common  = {
                 isValid = false;
                 errormessage += "Client Id is Required, ";
               }
-              
+
               if (!('client_secret_key' in auth)) {
                 isValid = false;
                 errormessage += "Client Secret Key is Required, ";
               }
-              
+
               if (!('gq_api_key' in auth)) {
                 isValid = false;
                 errormessage += "GQ API Key is Required, ";
@@ -96,7 +96,7 @@ export const Common  = {
     isValidEnv(env: any): boolean{
         if(env == "test" || env == "stage" || env == "preprod" || env == "live")
             return true;
-        else 
+        else
             return false;
     },
 
@@ -118,7 +118,7 @@ export const Common  = {
 
         const headers = {
             'Content-Type': 'application/json',
-            'Authorization': `Basic ${token}`
+            'Authorization': `Bearer ${token}`
         }
 
         try{
@@ -136,7 +136,7 @@ export const Common  = {
             //     console.log("ErrorResponse: "+JSON.stringify(data));
             //     throw new Error(JSON.stringify(data));
             // }
-        
+
             if (contentType && contentType.includes('application/json')) {
                 // Parse JSON response
                 const data = await response.json();
@@ -149,7 +149,7 @@ export const Common  = {
                 //     console.log("ErrorResponse: "+data);
                 //     console.log("ErrorResponse: "+JSON.stringify(data));
                 // }
-    
+
                 return data; // Return the API response data
             } else {
                 // Handle non-JSON response
@@ -161,7 +161,7 @@ export const Common  = {
 
             // const responseData = await response.json();
 
-            
+
             // if (response.ok) {
             //     console.log("SuccessResponse: "+responseData);
             //     console.log("SuccessResponse: "+JSON.stringify(responseData));
@@ -211,7 +211,7 @@ export const Common  = {
             //     console.log("ErrorResponse: "+JSON.stringify(data));
             //     throw new Error(JSON.stringify(data));
             // }
-        
+
             if (contentType && contentType.includes('application/json')) {
                 // Parse JSON response
                 const data = await response.json();
@@ -224,7 +224,7 @@ export const Common  = {
                 //     console.log("ErrorResponse: "+data);
                 //     console.log("ErrorResponse: "+JSON.stringify(data));
                 // }
-    
+
                 return data; // Return the API response data
             } else {
                 // Handle non-JSON response
@@ -236,7 +236,7 @@ export const Common  = {
 
             // const responseData = await response.json();
 
-            
+
             // if (response.ok) {
             //     console.log("SuccessResponse: "+responseData);
             //     console.log("SuccessResponse: "+JSON.stringify(responseData));
