@@ -31,27 +31,27 @@ export const Environment = {
     setEnvironment(env: any): any {
         switch(env){
             case "stage":
-                baseURLState.BASE_URL = "https://erp-api-stage.graydev.tech/";// Base URL for STAGE Environment
-                webBaseURLState.WEB_BASE_URL = "https://erp-sdk-stage.graydev.tech/";// Base Web URL for STAGE Environment`
-                redirectionURLState.REDIRECTION_URL = "svc-dp-stage.graydev.tech";// Redirection URL for STAGE Environment
+                baseURLState.BASE_URL = "https://erp-api-stage.graydev.tech/";
+                webBaseURLState.WEB_BASE_URL = "https://erp-sdk-stage.graydev.tech/";
+                redirectionURLState.REDIRECTION_URL = "svc-dp-stage.graydev.tech/";
                 cashfreeEnvState.CASHFREE_ENV = CFEnvironment.SANDBOX
             return (environmentState.environment = "stage");
             case "preprod":
-                baseURLState.BASE_URL = "https://erp-api-preprod.graydev.tech/";// Base URL for PREPROD Environment
-                webBaseURLState.WEB_BASE_URL = "https://erp-sdk-preprod.graydev.tech/";// Base Web URL for PREPROD Environment
-                redirectionURLState.REDIRECTION_URL = "svc-dp-preprod.graydev.tech";// Redirection URL for PREPROD Environment
+                baseURLState.BASE_URL = "https://erp-api.ppd.graydev.in/";
+                webBaseURLState.WEB_BASE_URL = "https://erp-sdk.ppd.graydev.in/";
+                redirectionURLState.REDIRECTION_URL = "svc-dp.ppd.graydev.in/";
                 cashfreeEnvState.CASHFREE_ENV = CFEnvironment.PRODUCTION
             return environmentState.environment = "preprod";
             case "live":
-                baseURLState.BASE_URL = "https://erp-api.grayquest.com/";// Base URL for PRODUCTION Environment
-                webBaseURLState.WEB_BASE_URL = "https://erp-sdk.grayquest.com/";// Base Web URL for PRODUCTION Environment
-                redirectionURLState.REDIRECTION_URL = "svc-dp.grayquest.com";// Redirecrtion URL for PRODUCTION Environment
+                baseURLState.BASE_URL = "https://erp-api.grayquest.com/";
+                webBaseURLState.WEB_BASE_URL = "https://erp-sdk.grayquest.com/";
+                redirectionURLState.REDIRECTION_URL = "svc-dp.grayquest.com/";
                 cashfreeEnvState.CASHFREE_ENV = CFEnvironment.PRODUCTION
             return environmentState.environment = "live";
             default:
-                baseURLState.BASE_URL = "https://erp-api.graydev.tech/";// Base URL for UAT Environment
-                webBaseURLState.WEB_BASE_URL = "https://erp-sdk.graydev.tech/";// Base Web URL for UAT Environment
-                redirectionURLState.REDIRECTION_URL = "svc-dp.graydev.tech";// Redirection URL for UAT Environment
+                baseURLState.BASE_URL = "https://erp-api.uat.graydev.in/";
+                webBaseURLState.WEB_BASE_URL = "https://erp-sdk.uat.graydev.in/";
+                redirectionURLState.REDIRECTION_URL = "svc-dp.uat.graydev.in/";
                 cashfreeEnvState.CASHFREE_ENV = CFEnvironment.SANDBOX
                 return environmentState.environment = "test";
         }

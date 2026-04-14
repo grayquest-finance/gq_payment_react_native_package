@@ -9,7 +9,6 @@ import GQSecWebView from './GQSecWebView';
 
 import {
   CFSession,
-  CFEnvironment,
 } from 'cashfree-pg-api-contract';
 
 
@@ -21,7 +20,7 @@ import { Environment } from './Environment';
 
 interface GQWebViewProps{
     url: string;
-    sdkSuccess: (data: any) => void;  
+    sdkSuccess: (data: any) => void;
     sdkCancel: (data: any) => void;
     sdkError: (data: any) => void;
 }
@@ -35,7 +34,7 @@ const GQWebView: React.FC<GQWebViewProps> = ({ url, sdkSuccess, sdkCancel, sdkEr
     let name;
 
     useEffect(() => {
-  
+
       const onVerify = (orderID: string) => {
         const paymentVerify = {
           'status': 'SUCCESS',
@@ -44,7 +43,7 @@ const GQWebView: React.FC<GQWebViewProps> = ({ url, sdkSuccess, sdkCancel, sdkEr
         // console.log('orderId is :' + orderID);
         webViewRef.current?.injectJavaScript(`sendPGPaymentResponse(${JSON.stringify(paymentVerify)});`);
       };
-  
+
       const onError = (error: CFErrorResponse, orderID: string) => {
         // console.log(
         //   'exception is : ' + JSON.stringify(error) + '\norderId is :' + orderID,
@@ -63,7 +62,7 @@ const GQWebView: React.FC<GQWebViewProps> = ({ url, sdkSuccess, sdkCancel, sdkEr
         }
         webViewRef.current?.injectJavaScript(`sendPGPaymentResponse(${JSON.stringify(paymentVerify)})`);
       };
-      
+
       // CFPaymentGatewayService.setEventSubscriber({onReceivedEvent});
       CFPaymentGatewayService.setCallback({onVerify, onError});
       return () => {
@@ -109,7 +108,7 @@ const GQWebView: React.FC<GQWebViewProps> = ({ url, sdkSuccess, sdkCancel, sdkEr
         console.log(e);
       }
     };
-  
+
     // Implement other methods similarly
     const getSession = (order_id: string, session_id: string) => {
       return new CFSession(
@@ -206,7 +205,7 @@ const GQWebView: React.FC<GQWebViewProps> = ({ url, sdkSuccess, sdkCancel, sdkEr
         name: prefill.name
       }
     }
-    
+
     RazorpayCheckout.open(options).then((data) => {
       // console.log(`PaymentSuccess: ${data}`)
       // console.log(`PaymentSuccess: ${JSON.stringify(data)}`)
@@ -242,7 +241,7 @@ const GQWebView: React.FC<GQWebViewProps> = ({ url, sdkSuccess, sdkCancel, sdkEr
       redirect: details.redirect,
       recurring: recurring
     }
-    
+
     RazorpayCheckout.open(options).then((data) => {
       // console.log(`ADSuccess: ${data}`)
       // console.log(`ADSuccess: ${JSON.stringify(data)}`)
@@ -284,7 +283,7 @@ const GQWebView: React.FC<GQWebViewProps> = ({ url, sdkSuccess, sdkCancel, sdkEr
               onRequestClose={() => setSecWebviewVisible((false))}
             >
               <View style={styles.webviewContainer}>
-                <GQSecWebView url= {changeURL} 
+                <GQSecWebView url= {changeURL}
                 onClose={handleSecWebClose}
                 />
               </View>
@@ -297,7 +296,7 @@ const GQWebView: React.FC<GQWebViewProps> = ({ url, sdkSuccess, sdkCancel, sdkEr
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0, 
+        marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
     },
     webviewContainer: {
       flex: 1,
