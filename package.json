@@ -1,6 +1,6 @@
 {
   "name": "gq_payment_react_native_package",
-  "version": "0.1.7",
+  "version": "0.1.2",
   "description": "The SDK is an integrated flow in ERP that will enable users to avail multiple payment options in a seamless manner, with faster integration and deployment times.",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
